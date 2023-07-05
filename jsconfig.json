@@ -3,6 +3,7 @@
     "module": "esnext",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "forceConsistentCasingInFileNames": true
   }
 }
