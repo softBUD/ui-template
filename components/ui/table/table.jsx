@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import moreSelect from '@/app/tables/more-select.svg'
 import Image from '@/node_modules/next/image'
 
+import TableBodySelect from '@/components/ui/table/table-body-select'
+
 import TableHeaderSelect from './table-header-select'
 
 function TableHead(props) {
@@ -63,7 +65,7 @@ export function BodyTr(props) {
   return <tr className="hover:bg-neutral-50">{props.children}</tr>
 }
 
-// 테이블 td
+// 테이블 td 커서 유무에따라 포인터 커서 설정
 export function BodyTd(props) {
   return props.cursor ? (
     <td className="border-b-slate cursor-pointer border-b pb-3 pl-2.5 pt-3 ">
@@ -76,10 +78,15 @@ export function BodyTd(props) {
   )
 }
 
+// 클릭시 edit/delete select바 노출
 export function BodySelectTd(props) {
+  const [openSelect, setOpenSelect] = useState(false)
   return (
-    <td className="border-b-slate cursor-pointer border-b pb-3 pl-2.5 pt-3 ">
-      <Image alt="more menu icon" width={20} height={20} src={moreSelect} />
+    <td
+      onClick={(e) => setOpenSelect(!openSelect)}
+      className="border-b-slate cursor-pointer border-b pb-3 pl-2.5 pt-3 "
+    >
+      <TableBodySelect openSelect={openSelect} />
     </td>
   )
 }
