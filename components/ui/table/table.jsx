@@ -110,7 +110,7 @@ export default function Table(props) {
           getClickedHeaderName={(text) => props.getClickedHeaderName(text)}
         />
       </thead>
-      <tbody>{props.bodyCell}</tbody>
+      <tbody>{props.children}</tbody>
     </table>
   )
 }

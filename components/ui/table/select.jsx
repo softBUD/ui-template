@@ -26,6 +26,7 @@ export default function Select(props) {
   const getClickValue = (value) => {
     setClickValue(value)
     setShow(false)
+    props.getClickValue(value)
   }
 
   // defaultValue: 기본 셀렉트박스 값, default value가 노출
@@ -38,6 +39,14 @@ export default function Select(props) {
   }
 
   window.addEventListener('click', handleClickOutside)
+
+  // 최초 렌더링 시에 부모에서 설정한 defaultValue값만 존재하는경우, clickValue에 값을 세팅
+  useEffect(() => {
+    if (props.defaultValue && !clickValue) {
+      setClickValue(props.defaultValue)
+      props.getClickValue(props.defaultValue)
+    }
+  }, [clickValue, props])
 
   return (
     <div
@@ -66,7 +75,7 @@ export default function Select(props) {
         </ul>
       </Transition>
       <div className="flex flex-row" onClick={(e) => setShow(!show)}>
-        {clickValue ? clickValue : props.defaultValue}
+        {clickValue}
 
         <div className="ml-8 mt-1">
           <Image src={DownUparrow} width={15} height={15} alt="up arrow" />
