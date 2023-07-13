@@ -91,6 +91,21 @@ export function BodySelectTd(props) {
   )
 }
 
+export function FootSelectTd(props) {
+  const [openSelect, setOpenSelect] = useState(false)
+  return (
+    <td
+      onClick={(e) => setOpenSelect(!openSelect)}
+      className="cursor-pointer pb-3 pt-3 "
+    >
+      <TableBodySelect
+        openSelect={openSelect}
+        listBoxPosition={props.listBoxPosition}
+      />
+    </td>
+  )
+}
+
 // 테이블 foot, td 마지막행
 export function FootTd(props) {
   return props.cursor ? (

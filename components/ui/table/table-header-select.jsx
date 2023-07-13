@@ -3,8 +3,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Transition } from '@windmill/react-ui'
 
-// source tree 버그있음
-// 테이블 바디 셀렉트 작업중
 function List(props) {
   const getClickedHeaderName = (value) => {
     props.getClickedHeaderName(value)

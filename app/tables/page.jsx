@@ -15,9 +15,9 @@ import Table, {
   BodySelectTd,
   BodyTd,
   BodyTr,
+  FootSelectTd,
   FootTd,
 } from '@/components/ui/table/table'
-import TableBodySelect from '@/components/ui/table/table-body-select'
 
 export default function Tablepage() {
   const [rowOrder, setRowOrder] = useState('')
@@ -26,7 +26,7 @@ export default function Tablepage() {
   const [data2, setData2] = useState([...dummyBody2])
   const [tableBody2, setTableBody2] = useState()
 
-  const [columnNumber, setColumnNumber] = useState()
+  const [rowNumber, setRowNumber] = useState()
 
   const TableBody = dummyBody.map((item, index) =>
     index < dummyBody.length - 1 ? (
@@ -67,7 +67,7 @@ export default function Tablepage() {
           <FootTd>{item.Amount}</FootTd>
           <FootTd>{item.Date}</FootTd>
           <FootTd cursor={true}>
-            <TableBodySelect />
+            <FootSelectTd listBoxPosition="top" />
           </FootTd>
         </BodyTr>
       )
@@ -92,21 +92,21 @@ export default function Tablepage() {
     }
     setTableOrder()
 
-    // array를 deps에 추가하면 무한으로 리렌더링 되서 error발생. 해당 deps만 무시하도록 한다.
+    // array를 depth에 추가하면 무한으로 리렌더링 되서 error발생. 해당 depth만 무시하도록 한다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clickRowName, rowOrder])
 
   useEffect(() => {
-    function setTableColumn() {
-      if (columnNumber) {
+    function setTableRow() {
+      if (rowNumber) {
         const array = [...dummyBody2]
-        const newbody = array.filter((item, index) => index < columnNumber)
+        const newbody = array.filter((item, index) => index < rowNumber)
 
         setData2(newbody)
       }
     }
-    setTableColumn()
-  }, [columnNumber])
+    setTableRow()
+  }, [rowNumber])
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-slate-100">
@@ -131,7 +131,7 @@ export default function Tablepage() {
               defaultValue={10}
               contents={['10', '20', '30']}
               listBoxPosition="top"
-              getClickValue={(number) => setColumnNumber(number)}
+              getClickValue={(number) => setRowNumber(number)}
             />
           </div>
         </Card>
