@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import moreSelect from '@/app/tables/more-select.svg'
+import moreSelect from '@/assets/more-select.svg'
 import Image from '@/node_modules/next/image'
 
-import TableBodySelect from '@/components/ui/table/table-body-select'
+import TableBodySelect from '@/components/table/table-body-select'
 
 import TableHeaderSelect from './table-header-select'
 
@@ -96,7 +96,7 @@ export function FootSelectTd(props) {
   return (
     <td
       onClick={(e) => setOpenSelect(!openSelect)}
-      className="cursor-pointer pb-3 pt-3 "
+      className="cursor-pointer pb-3 pl-2.5 pt-3 "
     >
       <TableBodySelect
         openSelect={openSelect}

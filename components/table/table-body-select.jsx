@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-import moreSelect from '@/app/tables/more-select.svg'
+import moreSelect from '@/assets/more-select.svg'
 import Image from '@/node_modules/next/image'
 import { Transition } from '@windmill/react-ui'
 
-import { List } from '@/components/ui/table/select'
+import { List } from '@/components/table/select'
 
 export default function TableBodySelect(props) {
   const eventEl = useRef(null)
@@ -26,7 +26,9 @@ export default function TableBodySelect(props) {
     }
   }
 
-  window.addEventListener('click', handleClickOutside)
+  useEffect(() => {
+    window.addEventListener('click', handleClickOutside)
+  }, [])
 
   return (
     <div ref={eventEl}>

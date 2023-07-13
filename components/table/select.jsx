@@ -1,8 +1,7 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react'
+import DownUparrow from '@/assets/arrow-down-up.svg'
 import Image from '@/node_modules/next/image'
 import { Transition } from '@windmill/react-ui'
-
-import DownUparrow from '@/components/ui/table/arrow-down-up.svg'
 
 export const List = forwardRef(function List(props, ref) {
   return (
@@ -37,8 +36,6 @@ export default function Select(props) {
       setShow(false)
     }
   }
-
-  window.addEventListener('click', handleClickOutside)
 
   // 최초 렌더링 시에 부모에서 설정한 defaultValue값만 존재하는경우, clickValue에 값을 세팅
   useEffect(() => {

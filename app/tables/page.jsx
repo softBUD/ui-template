@@ -3,23 +3,23 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Image from '@/node_modules/next/image'
 
-import Card from '@/components/ui/card'
+import Card from '@/components/card'
 import {
   dummyBody,
   dummyBody2,
   dummyHeader,
   dummyHeader2,
-} from '@/components/ui/table/dummy-data'
-import Select from '@/components/ui/table/select'
+} from '@/components/table/dummy-data'
+import Select from '@/components/table/select'
 import Table, {
   BodySelectTd,
   BodyTd,
   BodyTr,
   FootSelectTd,
   FootTd,
-} from '@/components/ui/table/table'
+} from '@/components/table/table'
 
-export default function Tablepage() {
+export default function Tables() {
   const [rowOrder, setRowOrder] = useState('')
   const [clickRowName, setClickRowName] = useState('')
   const [openSelect, setOpenSelect] = useState(false)
@@ -66,9 +66,7 @@ export default function Tablepage() {
           <FootTd>{item.Method}</FootTd>
           <FootTd>{item.Amount}</FootTd>
           <FootTd>{item.Date}</FootTd>
-          <FootTd cursor={true}>
-            <FootSelectTd listBoxPosition="top" />
-          </FootTd>
+          <FootSelectTd listBoxPosition="top" />
         </BodyTr>
       )
     )
